@@ -26,6 +26,7 @@ int main(){
   printf("last addition: %s\n",shm);
   printf("your addition: ");
   fgets(shm,SHM_SIZE,stdin);
+  //  sleep(10);
   write(fd,shm,strlen(shm));
   
   semup(SEMD);
