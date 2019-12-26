@@ -3,7 +3,7 @@ ifeq ($(DEBUG),true)
 endif
 
 all: write.o control.o err.o sem_util.o
-	gcc -o control control.o err.o
+	gcc -o control control.o err.o sem_util.o
 	gcc -o write write.o err.o
 write.o: write.c err.h sem_util.h standards.h
 	gcc -c write.c

@@ -3,5 +3,6 @@
 
 #define KEY 4229
 #define SHM_SIZE 256
+#define FILENAME "story_sofar"
 
 #endif
