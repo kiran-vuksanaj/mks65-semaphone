@@ -1,6 +1,8 @@
 # binary files
 control
 write
+# story file
+story_sofar
 
 # Created by https://www.gitignore.io/api/emacs,c
 # Edit at https://www.gitignore.io/?templates=emacs,c
