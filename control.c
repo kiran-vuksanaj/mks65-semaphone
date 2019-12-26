@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
   case 'c':
     create_sem(KEY,1);
     exit_err( shmget(KEY,SHM_SIZE,IPC_CREAT|IPC_EXCL|0644), "initializing shared memory" );
-    exit_err( open(FILENAME,O_CREAT|O_TRUNC), "resetting/opening file" );
+    exit_err( open(FILENAME,O_CREAT|O_TRUNC,0644), "resetting/opening file" );
     break;
   case 'r':
     SEMD = semget(KEY,1,0);
@@ -36,6 +36,7 @@ int main(int argc, char *argv[]){
     SHMD = shmget(KEY,SHM_SIZE,0);
     exit_err( SHMD, "connecting to shared memory" );
     exit_err(  shmctl(SHMD,IPC_RMID,0), "removing shared memory"  );
+    exit_err(  remove(FILENAME), "removing file" );
     break;
   case 'v':
     print_filecontents();
@@ -57,4 +58,5 @@ void print_filecontents(){
   while( read(fd,&buf,1) ){
     putchar(buf);
   }
+  printf("\n#### THE END ####\n");
 }
