@@ -36,10 +36,13 @@ int main(int argc, char *argv[]){
     print_filecontents();
     // don't need to semup bc its getting removed anyways
     remove_sem( SEMD );
+    printf("[semaphore removed]\n");
     SHMD = shmget(KEY,SHM_SIZE,0);
     exit_err( SHMD, "connecting to shared memory" );
     exit_err(  shmctl(SHMD,IPC_RMID,0), "removing shared memory"  );
+    printf("[shared memory removed]\n");
     exit_err(  remove(FILENAME), "removing file" );
+    printf("[file removed]\n");
     break;
   case 'v':
     print_filecontents();
