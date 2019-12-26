@@ -19,11 +19,13 @@ void remove_sem(int semd){
 }
 
 void semdown(int semd){
+  printf("[trying to get in]\n");
   struct sembuf sb;
   sb.sem_num = 0;
   sb.sem_op = -1;
   sb.sem_flg = 0;
   exit_err(  semop(semd,&sb,1), "downing semaphore" );
+  printf("[hacker voice: im in]\n");
 }
 
 void semup(int semd){
@@ -32,4 +34,5 @@ void semup(int semd){
   sb.sem_op = 1;
   sb.sem_flg = 0;
   exit_err(  semop(semd,&sb,1), "upping semaphore" );
+  printf("[we out]\n");
 }

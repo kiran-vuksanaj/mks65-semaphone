@@ -22,8 +22,11 @@ int main(int argc, char *argv[]){
   switch(argv[1][1]){
   case 'c':
     create_sem(KEY,1);
+    printf("[semaphore created]\n");
     exit_err( shmget(KEY,SHM_SIZE,IPC_CREAT|IPC_EXCL|0644), "initializing shared memory" );
+    printf("[shared memory initialized]\n");
     exit_err( open(FILENAME,O_CREAT|O_TRUNC,0644), "resetting/opening file" );
+    printf("[file created/reset]\n");
     break;
   case 'r':
     SEMD = semget(KEY,1,0);
